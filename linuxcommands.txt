@@ -1,0 +1,169 @@
+sed = string editor
+		using sed we can modify the file content without opening using any of vi command.
+how to print particular line
+	eg : want to print line 8
+		sed -n 8p file2
+
+What does awk command do?
+The awk command is a Linux tool and programming language that allows users to process and manipulate data and produce formatted reports.
+
+what is the use of grep command?
+	using grep we can search word(string) in file or files in one particular location.
+
+find is for search file/directory with many options.
+	we can search file with name
+	we can search file with size if we remember file size or directory size
+	we can search file with owner if we remember file owner or directory owner
+	we can search with inode number if we rember file inode number of directory inode number
+	we can search with date and time also if we remeber when we created 
+	we can search with permissions if we remember file or directory permissions
+
+		-name
+		-size
+		-user
+		-inum
+		-mtime
+		-perm
+
+
+	find / -name b26file1
+
+	find <path> <-name is clue> <fullfiling the clue>
+
+size:
+	find / -size +1G
+		to seach files with greater than 1 GB
+
+	how to search files with size between 1 GB to 5 GB
+		find / -size +1G -size -5G
+			between
+
+perm:
+	find / -perm 700
+
+***** how to search empty files?
+	find / -empty
+		or
+	find / -size 0
+		if need to search only empty files
+	find / -type f -size 0
+		f means files
+		d directories
+
+	find empty files in /app3 and remove them
+
+	find /app3 -type f -size 0 -exec rm -rf {} \;
+
+	-exec rm -rf {} \;
+	-exec mv {} / \;
+
+how to search files or directories with inode number?
+		find / -inum <inodenumber>
+
+how to find out older files which are created/modified older than 30 days
+
+	finding old logs and deleting 
+	finding older than 30 days logs and move or delete those data
+
+	-mtime modify time
+	find /var -type f -mtime +30
+		above command is for find out only files with older than 30 days modification days
+		find /var/log -type f -mtime +30 -exec rm -rf {} \; 
+find older than 90 days data from so and so location and delete those or move those.
+	find /var/log -type f -mtime +90 -exec rm -rf {} \;
+older than 2 days	
+	-mtime +2
+find out older than 10 min modified or created files
+       -mmin
+	find /app3 -mmin -5 
+	finding out files/dir which are created or modified with in 5 min (-mmin -5)
+
+more and less commands
+
+	more: is for view the file content with page by page
+	less : is for view the file content with page by page
+eg: there is lenghthy file like 100 pages file. requirement is need to read 100 pages file page by page
+        then we can use more or less commands to read the file content
+		more filename
+		less filename
+
+	more /var/log/messages
+		next page   	space bar
+		previous page    	b
+		line by line	enter key in key board
+				q for quit
+	less /var/log/messages
+		next page   	space bar
+		previous page    	b
+		line by line	enter key in key board
+				q for quit
+
+difference is search the word is very easy in less compare to more.
+
+which has more features?
+	less command
+
+	
+head and tail commands:
+
+
+Head: we can view the first 10 lines of the file
+tail: we can view the last 10 lines of the file
+
+	head filename
+	tail filename
+	
+particular lines
+	head -5 filename
+	tail -6 filename
+
+
+
+redirection the file output to another new file:
+		cat -n file1 > /file2
+
+	first command cat -n file1  ===> to view the file1 content with line numbers
+	second command > /file2 ===> redirect first command output to new file
+
+***** how to print between lines?
+	eg : i want to print line 10 to line 20
+	
+	head -20 file2 | tail -10
+
+	|  symbol = can store the previous command output and pass that output to next command as a input
+	
+		previous command output will store in | symbol
+	head -20 file2 output stored in |  now in | symbol first 20 lines are there. is this correct
+	tail -10 from | symbol
+		second command is depending on pipe symbol output
+
+	head -20 file2 | tail -10 | head -5 | head -1
+
+***** how to print particular line
+	eg : want to print line 8
+		sed -n 8p file2
+
+	sed = string editor
+		using sed we can modify the file content without opening using any of vi command.
+
+how to kill process?
+		kill pid
+		pkill processname
+
+how to check server performance?
+	1. top
+	using top we can verify the server performance, here we can see live data
+	what process is consuming how much RAM and How much cpu %.
+	2. SAR
+		using sar also we can analyze live and historical like yesterday how was the memory utilization over all 
+		not possible to get individual process utilization in sar
+
+disk utilization : storage capacity ( df -h) 
+The df command displays the amount of disk space available on the filesystem with each file name's argument.
+
+mount command is used to mount the filesystem found on a device to big tree structure(Linux filesystem) rooted at ‘/‘. 
+
+The Netcat ( nc ) command is a command-line utility for reading and writing data between two computer networks.
+
+SSH = using ssh we can transfer files/directories and remote administration can posible in secure maner.
+
