@@ -4,3 +4,14 @@ vivo
 oppo
 xiaomi
 realme
+
+editing in vi git bash
+
+apple
+samsung
+vivo
+oppo
+xiaomi
+realme
+
+
