@@ -1,0 +1,6 @@
+apple
+samsung
+vivo
+oppo
+xiaomi
+realme
